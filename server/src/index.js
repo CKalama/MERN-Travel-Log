@@ -1,4 +1,5 @@
-//Creating an instance of express
+//Creating a basic instance of express, strictly using JSON and no node/express templating engine. 
+
 const express = require("express")
 //morgan is a logger, it pulls in requests automatically. Anytime you log into the server or fire it up, it will log what route we hit. Good for debugging. If you deploy this, it will tell you who's IP was looking at your server
 const morgan = require("morgan"); 
