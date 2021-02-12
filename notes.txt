@@ -1,0 +1,13 @@
+MERN Log Entry 
+
+Title - Text 
+Description - Text 
+Comments - Text 
+Ratings - Scale 1-10
+Image - Text - URL - Google Database to upload?
+Start Date - DateTime
+End Date - DateTime 
+Latitude - Number 
+Longitude - Number 
+Created At - DateTime
+Updated at - DateTime 
