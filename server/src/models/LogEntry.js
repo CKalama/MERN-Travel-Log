@@ -1,15 +1,20 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose; 
+
+
 //If we put this into an object we can validate it before it is inserted into database. And then we can put into a variable so that we can reuse it!
 const requiredString = {
     type: String,
     required: true,
-}
+};
 const requiredNumber = {
     type: Number,
     required: true,
-}
+};
+const defaultDate = {
+    type: Date,
+    default: Date.now
+};
 
 const logEntrySchema = new Schema({
     title: requiredString,
@@ -24,12 +29,6 @@ const logEntrySchema = new Schema({
     },
     latitude: requiredNumber,
     longitude: requiredNumber,
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        
-    }
-})
+    created_at: defaultDate,
+    updated_at: defaultDate
+});
