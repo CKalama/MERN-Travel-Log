@@ -27,8 +27,16 @@ const logEntrySchema = new Schema({
         max:[10, `It does look great!`],
         default:0,
     },
-    latitude: requiredNumber,
-    longitude: requiredNumber,
+    latitude: {
+        ...requiredNumber,
+        min: -90,
+        max: 90,
+    },
+    longitude: {
+        ...requiredNumber,
+        min:-180,
+        max: 180,
+    },
     visitDate: {
         required: true,
         type: Date
@@ -39,4 +47,7 @@ const logEntrySchema = new Schema({
     
 });
 
-module.exports = logEntrySchema;
+//This is what we export to use elsewhere, the model is what gives us find, create, update, delete. All of the CRUD for MongoDB.
+const logEntry = mongoose.model('logEntry', logEntrySchema)
+
+module.exports = logEntry;
