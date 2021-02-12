@@ -11,10 +11,10 @@ const requiredNumber = {
     type: Number,
     required: true,
 };
-const defaultDate = {
-    type: Date,
-    default: Date.now
-};
+// const defaultDate = {
+//     type: Date,
+//     default: Date.now
+// };
 
 const logEntrySchema = new Schema({
     title: requiredString,
@@ -29,6 +29,12 @@ const logEntrySchema = new Schema({
     },
     latitude: requiredNumber,
     longitude: requiredNumber,
-    created_at: defaultDate,
-    updated_at: defaultDate
+    visitDate: {
+        required: true,
+        type: Date
+    },
+    //NOT SURE why this has this extra brack within the Schema... Must have something to do with timestamps. a Built in Mongoose type that acts as a CreatedAt and UpdatedAt datatype.
+}, {
+    timestamps: true,
+    
 });
