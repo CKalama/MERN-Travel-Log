@@ -22,7 +22,8 @@ const app = express();
 
 //Creating Mongoose connection. You can set up the mongoose library works is we can create a connection here or elsewhere and because we registered the logEntry model we will be good to go. WE shoould use enviornment variables here. Such as process.env
 mongoose.connect("mongodb://localhost/travel-log", {
-    useNewUrlParser: true 
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 const PORT = process.env.PORT || 1337
