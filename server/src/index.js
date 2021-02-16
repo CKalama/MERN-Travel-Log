@@ -21,7 +21,7 @@ const routes = require('./api/logs')
 const app = express();
 
 //Creating Mongoose connection. You can set up the mongoose library works is we can create a connection here or elsewhere and because we registered the logEntry model we will be good to go. WE shoould use enviornment variables here. Such as process.env
-mongoose.connect(process.env.TRAVEL_LOG_DATABASE_URL, {
+mongoose.connect("mongodb://localhost/travel-log", {
     useNewUrlParser: true 
 });
 

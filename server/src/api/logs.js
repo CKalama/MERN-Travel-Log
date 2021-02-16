@@ -9,6 +9,11 @@ router.get('/', (req,res) => {
     })
 })
 
+//Creating post route, the handler that runs when we receive a post request from the /logs route
+router.post('/', (req, res) => {
+    console.log(req.body);
+})
+
 
 
 
