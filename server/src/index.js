@@ -7,8 +7,10 @@ const morgan = require("morgan");
 const helmet = require("helmet")
 // cross-origin-resource-sharing header. Sets that to * meaning any origin can request from our backend. For ours, it includes localhost:3000 b/c that is what React runs on. With cors, we are able to say 'hey if you see this localhost:3000 pop up on the frontend then you can communicate with our backend' 
 const cors = require("cors");
-
+//Requiring Mongoose so we can set up connection
 const mongoose = require("mongoose");
+//requiring dotenv so that it will automatically read that file and use the values in .env within index.js
+require('dotenv').config();
 
 //importing middleware consts
 const { notFound, errorHandler } = require("./middlewares");
