@@ -16,7 +16,7 @@ require('dotenv').config();
 const { notFound, errorHandler } = require("./middlewares");
 
 //importing api routes which will also act as a middleware
-const logs = require('./api/logs')
+const routes = require('./api/logs')
 
 const app = express();
 
@@ -41,7 +41,7 @@ app.get( "/", (req, res) => {
     });
 });
 
-app.use('/api/logs', logs);
+app.use('/api/logs', routes);
 
 
 
