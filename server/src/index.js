@@ -15,6 +15,9 @@ require('dotenv').config();
 //importing middleware consts
 const { notFound, errorHandler } = require("./middlewares");
 
+//importing api routes which will also act as a middleware
+const logs = require('./api/logs')
+
 const app = express();
 
 //Creating Mongoose connection. You can set up the mongoose library works is we can create a connection here or elsewhere and because we registered the logEntry model we will be good to go. WE shoould use enviornment variables here. Such as process.env
@@ -38,6 +41,7 @@ app.get( "/", (req, res) => {
     });
 });
 
+app.use('/api/logs', logs);
 
 
 
