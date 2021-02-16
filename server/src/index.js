@@ -26,7 +26,7 @@ mongoose.connect("mongodb://localhost/travel-log", {
     useUnifiedTopology: true
 });
 
-const PORT = process.env.PORT || 1337
+const PORT = process.env.PORT || 8080
 
 //Middlewares running through Express Instance... 
 app.use(morgan('combined'));
@@ -34,6 +34,8 @@ app.use(helmet());
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
 }));
+//Using only json for the api so we can use express' bodyParser middleware
+app.use(express.json());
 
 
 app.get( "/", (req, res) => {
