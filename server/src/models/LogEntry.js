@@ -48,6 +48,6 @@ const logEntrySchema = new Schema({
 });
 
 //This is what we export to use elsewhere, the model is what gives us find, create, update, delete. All of the CRUD for MongoDB.
-const logEntry = mongoose.model('logEntry', logEntrySchema)
+const LogEntry = mongoose.model('LogEntry', logEntrySchema)
 
-module.exports = logEntry;
+module.exports = LogEntry;
