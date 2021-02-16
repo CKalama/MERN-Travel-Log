@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 1337
 app.use(morgan('combined'));
 app.use(helmet());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.CORS_ORIGIN,
 }));
 
 
