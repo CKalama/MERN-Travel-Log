@@ -4,9 +4,9 @@
 //This middleware is creating the Not Found Error, sending the 404 status code so we know its 404, and then forwarding to actual error handler.
 //Not Found Error Logic
 const notFound = (req, res, next) => {
-    const err = new Error(`Not Found - ${req.originalUrl} 😈`);
+    const error = new Error(`Not Found - ${req.originalUrl} 😈`);
     res.status(404)
-    next(err)
+    next(error)
 };
 
 
