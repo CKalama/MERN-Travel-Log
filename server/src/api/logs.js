@@ -17,7 +17,7 @@ router.get('/', (req,res) => {
 
 //Creating post route, the handler that runs when we receive a post request from the /logs route
         //jsonParser needs to be inbetween 2 parameters if you get body parser middleware back //
-        
+
 //Going to use an async parameter here how mongoose documentation wants us to (https://mongoosejs.com/docs/models.html#constructing-documents)
 //Need next so that the catch (error) will grab our middleware error we created
 router.post('/', async (req, res, next) => {
@@ -29,6 +29,11 @@ router.post('/', async (req, res, next) => {
         res.json(createdEntry);
     } 
     catch (error) {
+        //cool little console log that will tell you in console what the name of the error is.
+        console.log(error.name);
+        if (error.name === 'ValidationError') {
+            res.status(422);
+        }
         //need the Next from the parameter above so it hits our error in middleware.js
         next(error);
     }
