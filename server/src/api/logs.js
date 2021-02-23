@@ -9,11 +9,18 @@ const router = Router();
 // const jsonParser = bodyParser.json();
 // const urlencoderParser = bodyParser.urlencoded({extended: false });
 
-router.get('/', (req,res) => {
-    res.json({
-        message:"Hello This is a Test!!!!"
-    })
-})
+//The async with this get route will allow us to hit it without making it coded in choronological/synchronous order. 
+router.get('/', async (req,res, next) => {
+    //Wrap this in a try catch so we can hit our error Middleware we made everytime! Never know what might happen. 
+    try {
+        //.find is mongoose and await is express Javascript. 
+        const getEntry = await LogEntry.find();
+        res.json(getEntry);
+    }
+    catch (error) {
+        next(error);
+    };
+});
 
 //Creating post route, the handler that runs when we receive a post request from the /logs route
         //jsonParser needs to be inbetween 2 parameters if you get body parser middleware back //
@@ -30,17 +37,14 @@ router.post('/', async (req, res, next) => {
     } 
     catch (error) {
         //cool little console log that will tell you in console what the name of the error is.
-        console.log(error.name);
+        //console.log(error.name);
         if (error.name === 'ValidationError') {
             res.status(422);
         }
         //need the Next from the parameter above so it hits our error in middleware.js
         next(error);
-    }
-
-    
-    
-})
+    }    
+});
 
 
 
