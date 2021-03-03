@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
+import {listLogEntries} from "./API";
+
 const App = () => {
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -13,8 +15,13 @@ const App = () => {
   });
   
   //specifying an empty dependence array, this is where we will call from our backend.
+  //because this is an async function, you cant call it in an effect. You need to make an "iife" an immedately invoked function expression... It will look like the function below if you write an async function elsewhere
+  //(async () => {})();
   useEffect(() => {
-
+    (async () => {
+      const logEntries = await listLogEntries();
+      console.log(logEntries)
+    })();   
   }, [])
 
   return (
