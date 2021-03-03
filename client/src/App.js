@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { useState } from 'react';
+//useEffect behaves as ComponentDidMount in that we can create a function that only runs once. 
+import { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 
 const App = () => {
   const [viewport, setViewport] = useState({
-    width: 400,
-    height: 400,
-    latitude: 37.7577,
-    longitude: -122.4376,
-    zoom: 8
+    width: "100vw",
+    height: "100vh",
+    latitude: 39.7577,
+    longitude: -94.5786,
+    zoom: 4
   });
 
   return (
     <ReactMapGL
       {...viewport}
-      mapboxApiAccessToken = {process.env.REACT_MAP_MAPBOX_TOKEN}
+      mapStyle={"mapbox://styles/ckalama/cklsx5pnq1wh517o0xcovyl9q"}
+      mapboxApiAccessToken = {"pk.eyJ1IjoiY2thbGFtYSIsImEiOiJja2xzdGZ6aXIwaDdrMnVsZHRnbnN6dGx5In0.V6e_7u3hYfvIVbMQ9fNDfA"}
       onViewportChange={nextViewport => setViewport(nextViewport)}
     />
   );
