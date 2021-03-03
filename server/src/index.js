@@ -32,7 +32,7 @@ const PORT = process.env.PORT || 8080
 app.use(morgan('combined'));
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: 'http://localhost:3000',
 }));
 //Using only json for the api so we can use express' bodyParser middleware
 app.use(express.json());
