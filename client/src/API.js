@@ -5,7 +5,7 @@ const API_URL = "http://localhost:8080";
 
 
 //we can export this function by simply putting export at the beginning of the function. async allows us to call this function at any time
-async function listLogEntries() {
+export async function listLogEntries() {
     const response = await fetch(`${API_URL}/api/logs`);
     return response.json(); 
 }
