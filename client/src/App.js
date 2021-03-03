@@ -11,6 +11,11 @@ const App = () => {
     longitude: -94.5786,
     zoom: 4
   });
+  
+  //specifying an empty dependence array, this is where we will call from our backend.
+  useEffect(() => {
+
+  }, [])
 
   return (
     <ReactMapGL
