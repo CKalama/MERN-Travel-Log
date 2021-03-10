@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 //useEffect behaves as ComponentDidMount in that we can create a function that only runs once. 
 import { useState, useEffect } from 'react';
 import ReactMapGL, {Marker} from 'react-map-gl';
@@ -44,7 +45,20 @@ const App = () => {
       longitude={eachEntry.longitude} 
       offsetLeft={-20} offsetTop={-10}>
 
-        <div>{eachEntry.title}</div>
+      {/* <svg 
+      className="map-marker" 
+      viewBox="0 0 24 24"
+      stroke-width="2" 
+      fill="none" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> */}
+        <div>
+        <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
+        </div>
+      
+
+        {/* <div>{eachEntry.title}</div> */}
 
       </Marker>
       

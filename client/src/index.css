@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.map-marker {
+  stroke:darkgreen;
+  height:35px;
+  width:35px;
+}
