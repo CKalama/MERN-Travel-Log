@@ -2,13 +2,16 @@ import * as React from 'react';
 
 //useEffect behaves as ComponentDidMount in that we can create a function that only runs once. 
 import { useState, useEffect } from 'react';
-import ReactMapGL, {Marker} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 
 import {listLogEntries} from "./API";
 
 const App = () => {
   //creating a useState Hook, starting as an empty array. 
   const [logEntries, setLogEntries] = useState([])
+
+  //useState Hook for Popup
+  const [showPopup, setShowPopup] = useState({})
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -45,24 +48,27 @@ const App = () => {
       longitude={eachEntry.longitude} 
       offsetLeft={-20} offsetTop={-10}>
 
-      {/* <svg 
-      className="map-marker" 
-      viewBox="0 0 24 24"
-      stroke-width="2" 
-      fill="none" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> */}
+      
         <div>
         <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
         </div>
-      
-
-        {/* <div>{eachEntry.title}</div> */}
+          {/* <div>{eachEntry.title}</div> */}
 
       </Marker>
-      
       ))}
+        
+      <Popup
+          latitude={37.78}
+          longitude={-122.41}
+          closeButton={true}
+          closeOnClick={false}
+          // onClose={() => togglePopup(false)}
+          anchor="top" >
+          <div>You are Here</div>
+      </Popup>
+        
+          
+        
     
     </ReactMapGL>
   );
@@ -70,3 +76,22 @@ const App = () => {
 
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+///Original icon that I used for Map marker 
+{/* <svg 
+      className="map-marker" 
+      viewBox="0 0 24 24"
+      stroke-width="2" 
+      fill="none" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> */}
