@@ -13,6 +13,9 @@ const App = () => {
   //useState Hook for Popup
   const [showPopup, setShowPopup] = useState({})
 
+  //useState Hook for showAddMarkerPopUp
+  const [addEntryLocation, setAddEntryLocation] = useState(null)
+
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -35,7 +38,13 @@ const App = () => {
 
   const showAddMarkerPopup = (event) => {
     //lngLat is coming from MapBox, we console logged it to ensure that when we double click that something will appear in the console. We have a lot of data but I targeted the long lat first.
+    console.log(event);
     console.log(event.lngLat);
+    const [ longitude, latitude] = event.lngLat;
+    setAddEntryLocation({
+      latitude,
+      longitude,
+    })
   }
 
   return (
@@ -89,7 +98,23 @@ const App = () => {
       {/* Ending of Reach Fragment below */}
       </>
       ))}
-        
+      {/* Here we will bring in our AddPopUpMarker with a Ternary Operator. React Loves these Ternary Operators! */}
+       {
+         addEntryLocation ? (
+           <>
+           <Popup
+          latitude={addEntryLocation.latitude}
+          longitude={addEntryLocation.longitude}
+          closeButton={true}
+          closeOnClick={false}
+          dynamicPosition={true}
+          onClose={() => setAddEntryLocation(null)}
+          anchor="top" >
+          <h3>Add New Log Entry Here!</h3>
+          </Popup>
+           </>
+         ) : null 
+       } 
       
         
           
