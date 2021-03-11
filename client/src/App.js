@@ -58,7 +58,7 @@ const App = () => {
         })}
         >
         <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
-        
+
         </div>
           {/* <div>{eachEntry.title}</div> */}
       </Marker>
@@ -69,9 +69,10 @@ const App = () => {
           longitude={eachEntry.longitude}
           closeButton={true}
           closeOnClick={false}
-          // onClose={() => togglePopup(false)}
+          onClose={() => setShowPopup({showPopup: false})}
           anchor="top" >
-          <div>{eachEntry.comments}</div>
+          <h2>{eachEntry.title}</h2>
+          <p>{eachEntry.comments}</p>
           </Popup>
         ) : null
       }
