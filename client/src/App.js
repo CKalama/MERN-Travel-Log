@@ -71,13 +71,13 @@ const App = () => {
         onClick={() => setShowPopup({
           ...showPopup, 
           [eachEntry._id] : true,
-        })}
-        >
-        <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
+        })} >
 
+        <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
         </div>
-          {/* <div>{eachEntry.title}</div> */}
       </Marker>
+
+
       {
         showPopup[eachEntry._id] ? (
           <Popup
@@ -95,13 +95,26 @@ const App = () => {
           </Popup>
         ) : null
       }
-      {/* Ending of Reach Fragment below */}
       </>
       ))}
+
+
       {/* Here we will bring in our AddPopUpMarker with a Ternary Operator. React Loves these Ternary Operators! */}
        {
          addEntryLocation ? (
            <>
+        <Marker
+        latitude={addEntryLocation.latitude} 
+        longitude={addEntryLocation.longitude} 
+        offsetLeft={-20} offsetTop={-10}>
+
+      
+          <div> 
+            <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
+          </div>
+          {/* <div>{eachEntry.title}</div> */}
+      </Marker>
+
            <Popup
           latitude={addEntryLocation.latitude}
           longitude={addEntryLocation.longitude}
