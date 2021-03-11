@@ -33,12 +33,19 @@ const App = () => {
     })();   
   }, [])
 
+  const showAddMarkerPopup = (event) => {
+    //lngLat is coming from MapBox, we console logged it to ensure that when we double click that something will appear in the console. We have a lot of data but I targeted the long lat first.
+    console.log(event.lngLat);
+  }
+
   return (
     <ReactMapGL
       {...viewport}
       mapStyle={"mapbox://styles/ckalama/cklsx5pnq1wh517o0xcovyl9q"}
       mapboxApiAccessToken = {"pk.eyJ1IjoiY2thbGFtYSIsImEiOiJja2xzdGZ6aXIwaDdrMnVsZHRnbnN6dGx5In0.V6e_7u3hYfvIVbMQ9fNDfA"}
       onViewportChange={nextViewport => setViewport(nextViewport)}
+      //Supported by MapBox GL, now whenever we double click we can actually write a function that will allow us to interact with the mapBox if we double click. 
+      onDblClick={showAddMarkerPopup}
     >
 
     {logEntries.map(eachEntry => (
@@ -69,10 +76,13 @@ const App = () => {
           longitude={eachEntry.longitude}
           closeButton={true}
           closeOnClick={false}
-          onClose={() => setShowPopup({showPopup: false})}
+          dynamicPosition={true}
+          onClose={() => setShowPopup({})}
           anchor="top" >
           <h2>{eachEntry.title}</h2>
           <p>{eachEntry.comments}</p>
+          {/* Date is a Javascript Method that allows us to post the date in a string if we add the right syntax */}
+          <h4>Visited On: {new Date(eachEntry.visitDate).toLocaleDateString()}</h4>
           </Popup>
         ) : null
       }
