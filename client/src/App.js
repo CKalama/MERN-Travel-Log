@@ -42,6 +42,8 @@ const App = () => {
     >
 
     {logEntries.map(eachEntry => (
+      //Because of the popup and we don't want to make another div, we will create a React Fragment, which will allow us to return it because we have two elements in the root. We could have used a div but this works just as fine.
+      <>
       <Marker 
       key={eachEntry._id}
       latitude={eachEntry.latitude} 
@@ -49,23 +51,35 @@ const App = () => {
       offsetLeft={-20} offsetTop={-10}>
 
       
-        <div>
+        <div 
+        onClick={() => setShowPopup({
+          ...showPopup, 
+          [eachEntry._id] : true,
+        })}
+        >
         <img className="map-marker" src="https://i.imgur.com/y0G5YTX.png" alt='map-marker'/>
+        
         </div>
           {/* <div>{eachEntry.title}</div> */}
-
       </Marker>
-      ))}
-        
-      <Popup
-          latitude={37.78}
-          longitude={-122.41}
+      {
+        showPopup[eachEntry._id] ? (
+          <Popup
+          latitude={eachEntry.latitude}
+          longitude={eachEntry.longitude}
           closeButton={true}
           closeOnClick={false}
           // onClose={() => togglePopup(false)}
           anchor="top" >
-          <div>You are Here</div>
-      </Popup>
+          <div>{eachEntry.comments}</div>
+          </Popup>
+        ) : null
+      }
+      {/* Ending of Reach Fragment below */}
+      </>
+      ))}
+        
+      
         
           
         
