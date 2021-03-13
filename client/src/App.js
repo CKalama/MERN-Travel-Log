@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 
 import {listLogEntries} from "./API";
+import LogEntryForm from "./Components/LogEntryForm";
+
 
 const App = () => {
   //creating a useState Hook, starting as an empty array. 
@@ -123,7 +125,9 @@ const App = () => {
           dynamicPosition={true}
           onClose={() => setAddEntryLocation(null)}
           anchor="top" >
-          <h3>Add New Log Entry Here!</h3>
+          <div className="popup-form">
+          <LogEntryForm />
+          </div>
           </Popup>
            </>
          ) : null 
