@@ -20,16 +20,17 @@ code {
 }
 
 .popup-form{
-  max-width: 400px;
+  width: 20vw;
   padding: 1rem;
   color: blue;
   
 }
 
-.entry-form label, .entry-form input, .entry-form textarea {
+.entry-form label, .entry-form input, .entry-form textarea, .entry-form button {
+  text-align: center;
+  font-size: 1rem;
   margin: 0.5rem, 0rem;
   display: block;
   width: 100%;
-  
 }
 

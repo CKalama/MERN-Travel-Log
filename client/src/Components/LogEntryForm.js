@@ -14,13 +14,16 @@ const LogEntryForm = () => {
             <label for="description">Description</label>
             <textarea name="description" rows={3}/>
             <br />
-            
+
             <label for="image">Image</label>
             <input name="image" />
             <br />
 
             <label for="visitDate">Visited Date</label>
             <input name="visitDate" type="date" />
+            <br />
+
+            <button>Submit Your Travel Location!</button>
         </form>
     );
 };
