@@ -21,5 +21,15 @@ code {
 
 .popup-form{
   max-width: 400px;
+  padding: 1rem;
+  color: blue;
   
 }
+
+.entry-form label, .entry-form input, .entry-form textarea {
+  margin: 0.5rem, 0rem;
+  display: block;
+  width: 100%;
+  
+}
+
