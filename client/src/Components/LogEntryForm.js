@@ -27,6 +27,8 @@ const LogEntryForm = ( { location } ) => {
 
     return (
         <form onSubmit={handleSubmit(formSubmit)} className="entry-form">
+            {/* Ternary Operator that will have error appear or be null depending on sitch */}
+            {error ? <h2>{error}</h2> : null}
 
             <label htmlFor="title">Title</label>
             <input name="title" required ref={register}/>
@@ -48,7 +50,7 @@ const LogEntryForm = ( { location } ) => {
             <input name="visitDate" type="date" required ref={register} />
             <br />
 
-            <button>Submit Your Travel Location!</button>
+            <button disabled={loading}>{loading ? 'Loading...' : "Submit Your Travel Location!"}</button>
         </form>
     );
 };
