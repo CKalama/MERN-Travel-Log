@@ -26,16 +26,23 @@ const App = () => {
     zoom: 4
   });
   
+  const getEntries = async () => {
+    const logEntries = await listLogEntries();
+    //This logEntries is grabbing the const above, not the useState logEntries. 
+    setLogEntries(logEntries)
+  }
+
   //specifying an empty dependence array, this is where we will call from our backend.
   //because this is an async function, you cant call it in an effect. You need to make an "iife" an immedately invoked function expression... It will look like the function below if you write an async function elsewhere
   //(async () => {})();
   useEffect(() => {
-    (async () => {
-      const logEntries = await listLogEntries();
-      //This logEntries is grabbing the const above, not the useState logEntries. 
-      setLogEntries(logEntries)
-      //console.log(logEntries)
-    })();   
+    // (async () => {
+    //   const logEntries = await listLogEntries();
+    //   //This logEntries is grabbing the const above, not the useState logEntries. 
+    //   setLogEntries(logEntries)
+    //   //console.log(logEntries)
+    // })();
+    getEntries();   
   }, [])
 
   const showAddMarkerPopup = (event) => {
@@ -126,7 +133,12 @@ const App = () => {
           onClose={() => setAddEntryLocation(null)}
           anchor="top" >
           <div className="popup-form">
-          <LogEntryForm location={addEntryLocation}/>
+          <LogEntryForm 
+          onClose={() => {
+            setAddEntryLocation(null);
+            getEntries();
+          }}
+          location={addEntryLocation}/>
           </div>
           </Popup>
            </>

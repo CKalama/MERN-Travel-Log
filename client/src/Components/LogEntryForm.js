@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import {createLogEntry} from "../API";
 
 //We added this location prop because on App.js we set a requirement that long and lat are needed for the form to be validated. Instead of doing that here, we passed it through a prop that is already doing the work for us in map-gl which will help a lot!
-const LogEntryForm = ( { location } ) => {
+const LogEntryForm = ( { location, onClose } ) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('')
     //These are special to react-hook-form. 
@@ -19,9 +19,11 @@ const LogEntryForm = ( { location } ) => {
             data.longitude = location.longitude;
             const createdEntry = await createLogEntry(data)
             console.log(createdEntry)
+            onClose();
         } catch (error) {
             console.error(error)
             setError(error.message);
+            setLoading(false);
         }
     }
 
