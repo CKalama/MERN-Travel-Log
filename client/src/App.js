@@ -126,7 +126,7 @@ const App = () => {
           onClose={() => setAddEntryLocation(null)}
           anchor="top" >
           <div className="popup-form">
-          <LogEntryForm />
+          <LogEntryForm location={addEntryLocation}/>
           </div>
           </Popup>
            </>
