@@ -68,9 +68,9 @@ const App = () => {
 
     {logEntries.map(eachEntry => (
       //Because of the popup and we don't want to make another div, we will create a React Fragment, which will allow us to return it because we have two elements in the root. We could have used a div but this works just as fine.
-      <>
+      <React.Fragment key={eachEntry._id}>
       <Marker 
-      key={eachEntry._id}
+      
       latitude={eachEntry.latitude} 
       longitude={eachEntry.longitude} 
       offsetLeft={-20} offsetTop={-10}>
@@ -104,7 +104,7 @@ const App = () => {
           </Popup>
         ) : null
       }
-      </>
+      </React.Fragment>
       ))}
 
 
