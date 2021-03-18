@@ -67,7 +67,7 @@ const App = () => {
     >
 
     {logEntries.map(eachEntry => (
-      //Because of the popup and we don't want to make another div, we will create a React Fragment, which will allow us to return it because we have two elements in the root. We could have used a div but this works just as fine.
+      //Because of the popup and we don't want to make another div, We can have multiple children with no Parent. Create a React Fragment, which will allow us to return it because we have two elements in the root. We could have used a div but this works just as fine.
       <React.Fragment key={eachEntry._id}>
       <Marker 
       
@@ -101,6 +101,8 @@ const App = () => {
           <p>{eachEntry.comments}</p>
           {/* Date is a Javascript Method that allows us to post the date in a string if we add the right syntax */}
           <h4>Visited On: {new Date(eachEntry.visitDate).toLocaleDateString()}</h4>
+          {eachEntry.img ? <img /> : null}
+          {eachEntry.rating ? <h4>Rating: {eachEntry.rating}</h4> : null}
           </Popup>
         ) : null
       }
