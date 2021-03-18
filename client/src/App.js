@@ -101,7 +101,7 @@ const App = () => {
           <p>{eachEntry.comments}</p>
           {/* Date is a Javascript Method that allows us to post the date in a string if we add the right syntax */}
           <h4>Visited On: {new Date(eachEntry.visitDate).toLocaleDateString()}</h4>
-          {eachEntry.img ? <img /> : null}
+          {eachEntry.image ? <img src={eachEntry.image}/> : null}
           {eachEntry.rating ? <h4>Rating: {eachEntry.rating}</h4> : null}
           </Popup>
         ) : null
