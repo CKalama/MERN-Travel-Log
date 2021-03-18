@@ -7,7 +7,7 @@ import {createLogEntry} from "../API";
 const LogEntryForm = ( { location, onClose } ) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('')
-    const [rangeValue, setRangeValue] = useState(null);
+    const [rangeValue, setRangeValue] = useState("");
     //These are special to react-hook-form. 
     //register will need to be registered to our entire form, need to do on inputs and textareas, it will take the name and create an object of all the data. 
     const { register, handleSubmit, watch, errors } = useForm();
@@ -54,7 +54,7 @@ const LogEntryForm = ( { location, onClose } ) => {
             <br />
 
             <label htmlFor="rating">Rating: {rangeValue}</label>
-            <input name="rating" type="range" min="0" max="10" value="5" ref={register} 
+            <input name="rating" type="range" min="0" max="10" value={rangeValue} ref={register} 
             onChange={(event) => setRangeValue(event.target.value)}></input>
             <br />
 
