@@ -32,5 +32,10 @@ code {
   margin: 0.5rem, 0rem;
   display: block;
   width: 100%;
+
+}
+
+.popupInfo {
+  z-index: 1;
 }
 

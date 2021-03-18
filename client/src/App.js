@@ -90,6 +90,7 @@ const App = () => {
       {
         showPopup[eachEntry._id] ? (
           <Popup
+          className="popupInfo"
           latitude={eachEntry.latitude}
           longitude={eachEntry.longitude}
           closeButton={true}
