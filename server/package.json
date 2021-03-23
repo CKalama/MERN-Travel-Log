@@ -5,6 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "start:prod": "node server.js",
+    "build": "cd client && npm run build",
+    "install-client":"cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm ruin build",
     "dev": "nodemon src/index.js",
     "lint": "eslint src/"
   },

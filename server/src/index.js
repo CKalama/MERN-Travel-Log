@@ -55,6 +55,11 @@ app.use('/api/logs', routes);
 app.use(notFound);
 app.use(errorHandler);
 
+//Needed for Production on Heroku to read env variables and make a build. 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 app.listen(PORT, () => {
     console.log(`SERVER IS FIRED UP AT http://localhost:${PORT}`)
 })
