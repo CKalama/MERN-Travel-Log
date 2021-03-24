@@ -1,7 +1,7 @@
 //Here we will write functions to call the API. 
 //We will be using fetch and async functions. 
 
-const API_URL = "http://localhost:8080";
+//const API_URL = "http://localhost:8080";
 const API_URL2 = "https://secure-falls-24524.herokuapp.com";
 
 
