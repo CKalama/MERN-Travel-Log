@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node /src/index.js",
+    "start": "node /server/src/index.js",
     "start:prod": "node server.js",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
