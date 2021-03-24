@@ -3,10 +3,14 @@ import * as React from 'react';
 //useEffect behaves as ComponentDidMount in that we can create a function that only runs once. 
 import { useState, useEffect } from 'react';
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
 
 import {listLogEntries} from "./API";
 import LogEntryForm from "./Components/LogEntryForm";
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const App = () => {
   //creating a useState Hook, starting as an empty array. 
