@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(morgan('combined'));
 app.use(helmet());
 app.use(cors({
-    origin: process.env.PORT || 'http://localhost:3000',
+    origin: process.env.PORT || 'http://localhost:8080',
 }));
 //Using only json for the api so we can use express' bodyParser middleware
 app.use(express.json());
