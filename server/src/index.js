@@ -15,6 +15,11 @@ require('dotenv').config();
 //importing middleware consts
 const { notFound, errorHandler } = require("./middlewares");
 
+//Needed for Production on Heroku to read env variables and make a build. 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 //importing api routes which will also act as a middleware
 const routes = require('./api/logs')
 
@@ -29,11 +34,6 @@ mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/travel-log", {
 });
 
 const PORT = process.env.PORT || 8080
-
-//Needed for Production on Heroku to read env variables and make a build. 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
 
 //Middlewares running through Express Instance... 
 app.use(morgan('combined'));
