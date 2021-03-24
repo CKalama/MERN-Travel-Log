@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "/app/src/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node /app/src/index.js",
     "start:prod": "node server.js",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
