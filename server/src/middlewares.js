@@ -18,7 +18,7 @@ const errorHandler = (error, req, res, next) => {
     res.status(statusCode);
     res.json({
         message: error.message,
-        //Below, we can make sure that this stack is only displayed in development not production with a ternary operatior. Learning more about the fluidity of Javascript and Node on the backend.
+        //Below, we can make sure that this stack is only displayed in production not development with a ternary operatior. Learning more about the fluidity of Javascript and Node on the backend.
         stack: process.env.NODE_ENV === 'production' ? 'Stop! You Have Violated the Law! Pay the Court the fine or serve your sentence. Your IP is not forfeit...' : error.stack,
     })
 };
