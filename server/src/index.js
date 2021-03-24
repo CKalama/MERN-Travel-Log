@@ -15,15 +15,15 @@ require('dotenv').config();
 //importing middleware consts
 const { notFound, errorHandler } = require("./middlewares");
 
-//Needed for Production on Heroku to read env variables and make a build. 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
-
 //importing api routes which will also act as a middleware
 const routes = require('./api/logs')
 
 const app = express();
+
+//Needed for Production on Heroku to read env variables and make a build. 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 
 //Creating Mongoose connection. You can set up the mongoose library works is we can create a connection here or elsewhere and because we registered the logEntry model we will be good to go. WE shoould use enviornment variables here. Such as process.env
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/travel-log", {
@@ -44,9 +44,9 @@ app.use(cors({
 //Using only json for the api so we can use express' bodyParser middleware
 app.use(express.json());
 
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('*', (request, response) => {
+// 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 
 app.get( "/", (req, res) => {
