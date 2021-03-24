@@ -30,6 +30,11 @@ mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/travel-log", {
 
 const PORT = process.env.PORT || 8080
 
+//Needed for Production on Heroku to read env variables and make a build. 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 //Middlewares running through Express Instance... 
 app.use(morgan('combined'));
 app.use(helmet());
@@ -54,11 +59,6 @@ app.use('/api/logs', routes);
 //Error Catching Middleware, has to go at bottom
 app.use(notFound);
 app.use(errorHandler);
-
-//Needed for Production on Heroku to read env variables and make a build. 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
 
 app.listen(PORT, () => {
     console.log(`SERVER IS FIRED UP AT http://localhost:${PORT}`)
