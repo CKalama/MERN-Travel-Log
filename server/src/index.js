@@ -44,6 +44,10 @@ app.use(cors({
 //Using only json for the api so we can use express' bodyParser middleware
 app.use(express.json());
 
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 
 app.get( "/", (req, res) => {
     res.json({
